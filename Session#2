@@ -1,0 +1,60 @@
+import numpy as np
+class Queue:
+
+ 
+    def __init__(self, size):
+        self.queue = []
+        self.size = size
+        self.elements=np.zeros([self.size] ,dtype="int8")
+        self.front = -1
+        self.rear = -1
+
+    def queue_Enqueue(self, data):
+
+        if self.size == self.rear:
+            print("\nQueue is full")
+
+
+        else:
+            self.queue.append(data)
+            self.rear += 1
+
+    def queue_Dequeue(self):
+
+        if self.front == self.rear:
+            print("Queue is empty")
+
+
+        else:
+            x = self.queue.pop(0)
+            self.rear -= 1
+
+
+    def queue_Display(self):
+
+        if self.front == self.rear:
+            print("\nQueue is Empty")
+
+        for i in self.queue:
+            print(i)
+
+    def queue_Front(self):
+
+        if self.front == self.rear:
+            print("\nQueue is Empty")
+
+        print("\nFront Element :",
+              self.queue[self.front])
+
+
+if __name__ == '__main__':
+    q = Queue(4)
+
+    q.queue_Display()
+    q.queue_Enqueue(20)
+    q.queue_Enqueue(30)
+    q.queue_Enqueue(40)
+    q.queue_Enqueue(50)
+    q.queue_Display()
+    q.queue_Enqueue(60)
+    q.queue_Front()
