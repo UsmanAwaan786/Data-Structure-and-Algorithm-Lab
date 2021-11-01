@@ -1,0 +1,54 @@
+class Node:
+
+    def __init__(self, data=None): #Node Constructor
+        self.data = data  
+        self.next = None  
+        print("node is created")
+  
+# Linked List class
+class LinkedList:   
+
+    def __init__(self): #constructor
+        self.head = Node()  
+        print("head is initilaized")
+
+    def append(self, data): #simple append function
+        new_Node = Node(data) 
+        curr= self.head    
+        while curr.next!=None:
+          curr = curr.next
+        curr.next=new_Node  
+        new_Node=self.head   
+    
+    def appendbefore(self, data): #appendbefore function
+
+     new_node = Node(data)
+     new_node.next = self.head
+     self.head = new_node     
+
+    def display(self): #print function
+       curr=self.head
+       dis=[]
+       while curr.next!=None:
+         curr =curr.next
+         dis.append(curr.data)
+       print(dis)
+
+    def delete(self):#delete functions
+    
+        curr = self.head
+        while curr.next.next !=None:
+            second_last = curr.next.next 
+            del curr.data
+            curr = second_last
+            
+          
+            
+if __name__=='__main__':
+   
+ mylist=LinkedList()
+ mylist.appendbefore(1)
+ mylist.appendbefore(2)
+ mylist.appendbefore(3)
+ mylist.display()
+ mylist.delete()
